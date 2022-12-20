@@ -8,27 +8,20 @@ public class Main {
 
         System.out.println("Введите в одну строку математическую операцию для вычисления");
         System.out.println("Возможные значения от 1 до 10 или I до Х");
-        calculate.vvodOper();
-        calculate.obrabotca(calculate.perem1);
-        calculate.peremennye(calculate.perem1);
-        for (int elem: calculate.peremenn){
-            System.out.println(elem);
-        }
+        calculate.peremennye();
+            System.out.println(calculate.result);
+
     }
 }
     class Calculate{
-    int[] peremenn = new int[2];
-    String perem1;
-
     int result;
-    String stroka;
-        Scanner vvod = new Scanner(System.in);
-        String vvodOper() {
+
+        int peremennye(){
+            Scanner vvod = new Scanner(System.in);
+            String perem1;
+            int[] peremenn = new int[2];
             perem1 = vvod.nextLine(); //Ввод
             perem1 = perem1.trim();
-            return perem1;
-        }
-    int[] peremennye(String perem1){
             char sim = ' '; //Убрать пробел и создать исключение если ни одного из сиволов нет
             String[] perem2 = new String[2];
             if (perem1.contains("+")) {           // сложить
@@ -65,7 +58,22 @@ public class Main {
                 peremenn[0] = x;
                 peremenn[1] = y;
             }
-            return peremenn;
+
+            switch (sim){
+                case '+':
+                    result = peremenn[0] + peremenn[1];
+                    break;
+                case '-':
+                    result = peremenn[0] - peremenn[1];
+                    break;
+                case '/':
+                    result = peremenn[0] / peremenn[1];
+                    break;
+                case '*':
+                    result = peremenn[0] * peremenn[1];
+                    break;
+            }
+            return result;
         }
     void obrabotca(String s){
          // String kiril[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
