@@ -42,7 +42,7 @@ public class Main {
             if (romTrue == 1) {
                 x = romToInt(perem2[0]);
                 y = romToInt(perem2[1]);
-                result = calc(x,y);
+                result = calc(x, y);
                 if (result < 1) {
                     try {
                         throw new Exception();
@@ -52,7 +52,7 @@ public class Main {
                     }
                 }
 
-            }else {
+            } else {
                 if (Integer.parseInt(perem2[0]) > 10 && Integer.parseInt(perem2[1]) > 10 && Integer.parseInt(perem2[1]) < 1 && Integer.parseInt(perem2[1]) < 1) {
                     System.out.println("Значение не входит в требуемый диапазон");
 
@@ -108,6 +108,52 @@ public class Main {
             return romTrue;
         }
 
+        //  char getRom(int r) {
+
+        //     if (r < 10) {
+//         switch(r)
+//        {
+//            case 1:
+//                result = 'I';
+//                break;
+//            case 2:
+//                result = 'II';
+//                break;
+//            case 3:
+//                result = 'III';
+//                break;
+//            case 4:
+//                result = 'IV';
+//                break;
+//            case 5:
+//                result = 'V';
+//                break;
+//            case 6:
+//                result = 'VI';
+//                break;
+//            case 7:
+//                result = 'VII';
+//                break;
+//            case 8:
+//                result = 'VIII';
+//                break;
+//            case 9:
+//                result = 'IX';
+//                break;
+//        }
+//            return result;
+    //}
+      //      else if (r >= 10) return 'X';
+       //     else if (r >= 20) return 'XX';
+       //     else if (r >= 30) return 'XXX';
+       //     else if (r >= 40) return 'XL';
+       //     else if (r >= 50) return 'L';
+       //     else if (r >= 60) return 'LX';
+        //    else if (r >= 70) return 'LXX';
+       //     else if(r >= 80) return 'LXXX';
+        //    else if(r >= 90) return 'XC';
+       //     return 0;
+      //  }
         int getArabian(char rom) {
             if ('I' == rom) return 1;
             else if ('V' == rom) return 5;
