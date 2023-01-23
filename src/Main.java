@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-import static java.lang.Integer.parseInt;
-
 public class Main {
     public static void main(String[] args) {
         Calculate calculate = new Calculate();
@@ -9,8 +7,7 @@ public class Main {
         System.out.println("Введите в одну строку математическую операцию для вычисления");
         System.out.println("Возможные значения от 1 до 10 или I до Х");
         calculate.peremennye();
-            System.out.println(calculate.result);
-
+        System.out.println(calculate.result);
     }
 }
     class Calculate {
@@ -19,6 +16,7 @@ public class Main {
         String[] sim = {"+", "-", "/", "*"};
         int x = 0, y = 0;
         int simInd;
+        String rom;
 
         void peremennye() {
             Scanner vvod = new Scanner(System.in);
@@ -43,6 +41,7 @@ public class Main {
                 x = romToInt(perem2[0]);
                 y = romToInt(perem2[1]);
                 result = calc(x, y);
+                rom = intToRom(result);
                 if (result < 1) {
                     try {
                         throw new Exception();
@@ -50,6 +49,10 @@ public class Main {
                         System.out.println("в римской системе нет отрицательных чисел");
                         System.exit(0);
                     }
+                }else{
+                    System.out.println(rom);
+                    System.exit(0);
+
                 }
 
             } else {
@@ -60,6 +63,7 @@ public class Main {
                     x = Integer.parseInt(perem2[0]);
                     y = Integer.parseInt(perem2[1]);
                     result = calc(x, y);
+
                 }
             }
         }
@@ -93,7 +97,7 @@ public class Main {
                 try {
                     throw new Exception();
                 } catch (Exception e) {
-                    System.out.println("формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
+                    System.out.println("формат математической операции не удовлетворяет заданию");
                     System.exit(0);
                 }
             }
@@ -108,52 +112,22 @@ public class Main {
             return romTrue;
         }
 
-        //  char getRom(int r) {
+        public String intToRom (int res) {
+            int[] num = {100,90,50,40,10,9,5,4,1};
+            String[] str = {"C","XC","L","XL","X","IX","V","IV","I"};
+            if (res < 1 || res > 100) return "";
 
-        //     if (r < 10) {
-//         switch(r)
-//        {
-//            case 1:
-//                result = 'I';
-//                break;
-//            case 2:
-//                result = 'II';
-//                break;
-//            case 3:
-//                result = 'III';
-//                break;
-//            case 4:
-//                result = 'IV';
-//                break;
-//            case 5:
-//                result = 'V';
-//                break;
-//            case 6:
-//                result = 'VI';
-//                break;
-//            case 7:
-//                result = 'VII';
-//                break;
-//            case 8:
-//                result = 'VIII';
-//                break;
-//            case 9:
-//                result = 'IX';
-//                break;
-//        }
-//            return result;
-    //}
-      //      else if (r >= 10) return 'X';
-       //     else if (r >= 20) return 'XX';
-       //     else if (r >= 30) return 'XXX';
-       //     else if (r >= 40) return 'XL';
-       //     else if (r >= 50) return 'L';
-       //     else if (r >= 60) return 'LX';
-        //    else if (r >= 70) return 'LXX';
-       //     else if(r >= 80) return 'LXXX';
-        //    else if(r >= 90) return 'XC';
-       //     return 0;
-      //  }
+            StringBuilder sb = new StringBuilder();
+            for (int i=0; i<num.length && res>0; i++){
+                while (res>=num[i]){
+                    res -= num[i];
+                    sb.append(str[i]);
+                }
+            }
+
+
+            return sb.toString();
+        }
         int getArabian(char rom) {
             if ('I' == rom) return 1;
             else if ('V' == rom) return 5;
